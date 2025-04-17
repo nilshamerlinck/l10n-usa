@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="portal_autopay_rules">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True" />
+
+            <t t-call="account_banking_ach_direct_debit_portal.debit_portal_searchbar">
+                <t t-set="title">Autopay Rules</t>
+            </t>
+
+            <div id="autopay-settings">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <h4 class="header-title mb-0 me-2">Autopay Rules</h4>
+
+                        <div class="text-danger">
+                            <i
+                                class="fa fa-exclamation-circle me-1"
+                            /> Bank authentication is required
+                        </div>
+                    </div>
+
+                    <label class="btn btn-toggle">
+                        Disable Autopay
+                        <input
+                            class="autopay-disable"
+                            name="autopay_rule"
+                            id="rule_disabled"
+                            value="disabled"
+                            t-att-checked="partner.autopay == 'disabled'"
+                            type="checkbox"
+                        />
+                        <span class="slider" />
+                    </label>
+                </div>
+
+                <label
+                    t-if="partner.autopay != 'disabled'"
+                    class="rule-option"
+                    for="rule_1"
+                >
+                    <div
+                        class="d-flex justify-content-between align-items-center cursor-pointer w-100"
+                    >
+                        <div class="d-flex justify-content-start align-items-center">
+                            <input
+                                type="radio"
+                                class="autopay-radio"
+                                name="autopay_rule"
+                                id="rule_1"
+                                value="end_of_month"
+                                t-att-checked="'end_of_month' == partner.autopay"
+                            />
+                            <span class="ms-2">Number of days before month end</span>
+                        </div>
+
+                        <span
+                            class="note text-muted"
+                        >5 days before month end ( Default )</span>
+                    </div>
+                </label>
+
+                <label
+                    t-if="partner.autopay != 'disabled'"
+                    class="rule-option"
+                    for="rule_2"
+                >
+                    <div
+                        class="d-flex justify-content-between align-items-center cursor-pointer w-100"
+                    >
+                        <div class="d-flex justify-content-start align-items-center">
+                            <input
+                                type="radio"
+                                class="autopay-radio"
+                                name="autopay_rule"
+                                id="rule_2"
+                                value="on_due_date"
+                                t-att-checked="'on_due_date' == partner.autopay"
+                            />
+                            <span class="ms-2">On due date</span>
+                        </div>
+
+                        <span class="note text-muted">Current date: <t
+                                t-esc="current_date"
+                            /></span>
+                    </div>
+                </label>
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const checkbox = document.getElementById("rule_disabled");
+
+                    checkbox.addEventListener("change", function () {
+                        const autopayValue = this.checked ? "end_of_month" : "disabled";
+
+                        fetch("/autopay-rules/change", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "X-Requested-With": "XMLHttpRequest",
+                                "X-CSRFToken": odoo.csrf_token,
+                            },
+                            body: JSON.stringify({
+                                autopay_rule: autopayValue,
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            window.location.reload();
+                        })
+                        .catch(error => {
+                            console.error("Error:", error);
+                        });
+                    });
+
+                    document.querySelectorAll(".autopay-radio").forEach(function (radio) {
+                        radio.addEventListener("change", function () {
+                            const selectedValue = this.value;
+
+                            fetch("/autopay-rules/change", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    "X-Requested-With": "XMLHttpRequest",
+                                    "X-CSRFToken": odoo.csrf_token,
+                                },
+                                body: JSON.stringify({ autopay_rule: selectedValue }),
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                window.location.reload();
+                            })
+                            .catch(error => {
+                                console.error("Error:", error);
+                            });
+                        });
+                    });
+                });
+            </script>
+        </t>
+    </template>
+</odoo>
