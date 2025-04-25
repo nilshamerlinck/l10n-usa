@@ -1,0 +1,102 @@
+#wrapwrap.o_portal {
+    #payment {
+        .card-header {
+            border-bottom: 1px solid #d9d9d9;
+            padding: 12px 24px;
+            background-color: white;
+        }
+
+        .card-title {
+            font-family: Inter;
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 23.85px;
+            letter-spacing: 0%;
+            color: #1e5593;
+            margin-bottom: 0;
+        }
+
+        .invoice-select {
+            border-radius: 0.4rem;
+            border: 1px solid #ced4da;
+            font-size: 0.95rem;
+            color: #333;
+            padding: 0.5rem 0.75rem;
+            background-color: white;
+
+            &:focus {
+                border-color: #0d6efd;
+                box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+            }
+        }
+
+        .payment-method-option {
+            padding: 24px 12px;
+            background-color: #fff;
+            width: 100%;
+
+            &:not(:first-child) {
+                border-top: 1px solid #dee2e6;
+            }
+
+            .option {
+                font-family: Inter;
+                font-weight: 500;
+                font-size: 20px;
+                letter-spacing: 0%;
+                color: #323232;
+            }
+
+            .note {
+                color: rgba(50, 50, 50, 0.25);
+            }
+
+            .credit_card_img {
+                height: 40px;
+            }
+        }
+
+        .o_portal_my_doc_table {
+            th {
+                background-color: white;
+                font-family: Inter;
+                font-weight: 500;
+                font-size: 13.84px;
+                line-height: 19.37px;
+                letter-spacing: 0%;
+                color: #ababab;
+            }
+
+            td:first-child,
+            th:first-child {
+                padding-left: 24px;
+            }
+        }
+
+        .summary {
+            .card-title {
+                font-family: Inter;
+                font-weight: 500;
+                font-size: 36px;
+                line-height: 23.85px;
+                letter-spacing: 0%;
+                color: #323232;
+                margin-bottom: 45px;
+            }
+
+            .label {
+                font-family: Inter;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 19.37px;
+                letter-spacing: 0%;
+                color: #a9a9a9;
+            }
+
+            .btn-submit {
+                background-color: #1e5593;
+                color: white;
+            }
+        }
+    }
+}

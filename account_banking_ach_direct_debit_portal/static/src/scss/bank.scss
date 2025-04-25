@@ -1,0 +1,63 @@
+#wrapwrap.o_portal {
+    #bank_accounts {
+        padding-right: var(--bs-gutter-x, 0.75rem);
+        padding-left: var(--bs-gutter-x, 0.75rem);
+
+        .bank-account {
+            border: 1px solid #e5e7eb;
+            border-radius: 5px;
+            padding: 15px 20px;
+            display: flex;
+            min-height: 100px;
+            margin: 10px auto;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            background-color: #fff;
+
+            .bank-info {
+                color: #444;
+                font-size: 14px;
+                line-height: 1.5;
+
+                div:first-child {
+                    font-weight: 600;
+                }
+            }
+
+            .edit-btn {
+                font-size: 16px;
+                color: #111827;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 20px;
+                letter-spacing: 0%;
+            }
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 40px;
+
+            label {
+                display: block;
+                font-weight: 600;
+                margin-bottom: 8px;
+            }
+
+            input,
+            select {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                font-size: 14px;
+            }
+
+            select {
+                height: 42px;
+                background-color: white;
+            }
+        }
+    }
+}

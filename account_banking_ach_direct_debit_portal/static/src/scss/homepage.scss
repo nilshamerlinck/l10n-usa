@@ -1,0 +1,47 @@
+#wrapwrap.o_portal {
+    #account-homepage {
+        .card-credit {
+            background-color: #f0f8ff;
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            padding: 1rem 1.5rem;
+            height: 100%;
+
+            .icon {
+                font-size: 30px;
+                color: #174378;
+            }
+
+            .info-icon {
+                border: 1px solid #00000033;
+                border-radius: 50%;
+                color: #00000033;
+                position: relative;
+                height: 24px;
+                width: 24px;
+                cursor: pointer;
+
+                i {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+
+            h6 {
+                font-size: 1.25rem;
+                margin-bottom: 0;
+            }
+
+            .amount {
+                font-family: Inter;
+                font-weight: 600;
+                font-size: 2rem;
+                letter-spacing: 0%;
+                color: #174378;
+                margin-top: 5px;
+            }
+        }
+    }
+}
